@@ -1,6 +1,6 @@
 # Python Scripts
 
-## Installing the scripts
+## Installing the Scripts
 
 1. Clone the repo:
    `git clone https://github.com/parafoxia/python-scripts`
@@ -8,6 +8,8 @@
    `chmod +x python-scripts`
 3. Add the scripts to your path by adding the following to your .bashrc/.zshrc/etc.:
    `PATH=$PATH:/path/to/python-scripts`
+4. Apply the changes:
+   `source .bashrc`
 
 ## Installing Python
 
@@ -27,7 +29,7 @@ For example:
 install-python 3.10.7 3.8.0b2 3.11.0rc1
 ```
 
-**Note:** If you do not use a Debian-based system, you will need to edit the script to use your distribution.
+**Note:** If you do not use a Debian-based system, you will need to edit the script to use your distribution's package manager.
 
 ## Uninstalling Python
 
