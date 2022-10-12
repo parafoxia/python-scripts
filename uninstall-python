@@ -25,19 +25,17 @@ for VER do
         exit 2
     fi
 
-    # Remove bin files.
-    rm -rf "${BIN_PATH}/2to3-${VER}"
-    rm -rf "${BIN_PATH}/idle${VER}"
-    rm -rf "${BIN_PATH}/pip${VER}"
-    rm -rf "${BIN_PATH}/pydoc${VER}"
-    rm -rf "${BIN_PATH}/python${VER}"
-    rm -rf "${BIN_PATH}/python${VER}-config"
-
-    # Remove lib files.
-    rm -rf "${LIB_PATH}/libpython${VER}.a"
-    rm -rf "${LIB_PATH}/python${VER}"
-    rm -rf "${LIB_PATH}/python${VER}-embed.pc"
-    rm -rf "${LIB_PATH}/python${VER}.pc"
+    # Remove files.
+    sudo rm -rf "${BIN_PATH}/2to3-${VER}" \
+        "${BIN_PATH}/idle${VER}" \
+        "${BIN_PATH}/pip${VER}" \
+        "${BIN_PATH}/pydoc${VER}" \
+        "${BIN_PATH}/python${VER}" \
+        "${BIN_PATH}/python${VER}-config" \
+        "${LIB_PATH}/libpython${VER}.a" \
+        "${LIB_PATH}/python${VER}" \
+        "${LIB_PATH}/python${VER}-embed.pc" \
+        "${LIB_PATH}/python${VER}.pc"
 done
 
 echo "All done!"
