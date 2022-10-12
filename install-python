@@ -1,0 +1,58 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+    echo "You must provide at least one Python version."
+    exit 2
+fi
+
+echo "Configuring packages..."
+sudo apt-get update -qq && sudo apt-get upgrade -qq
+sudo apt-get install -qq \
+    build-essential \
+    libbz2-dev \
+    libffi-dev \
+    libgdbm-dev \
+    liblzma-dev \
+    libncurses5-dev \
+    libnss3-dev \
+    libreadline-dev \
+    libssl-dev \
+    libsqlite3-dev \
+    pkg-config \
+    tk-dev \
+    wget \
+    zlib1g-dev
+
+cd /tmp
+
+for VER do
+    if [[ $VER == *"a"* ]]; then
+        PARTIAL="$(cut -d 'a' -f 1 <<< $VER)"
+    elif [[ $VER == *"b"* ]]; then
+        PARTIAL="$(cut -d 'b' -f 1 <<< $VER)"
+    elif [[ $VER == *"rc"* ]]; then
+        PARTIAL="$(cut -d 'r' -f 1 <<< $VER)"
+    else
+        PARTIAL=$VER
+    fi
+
+    echo "Downloading Python $VER..."
+    wget -q https://www.python.org/ftp/python/$PARTIAL/Python-$VER.tgz
+
+    if [[ ! -f Python-$VER.tgz ]]; then
+        echo "That Python version does not exist."
+        exit 2
+    fi
+
+    tar -xf Python-$VER.tgz
+
+    echo "Building Python $VER..."
+    cd Python-$VER
+    ./configure -q --enable-optimizations --with-ensurepip=install --with-system-ffi
+    make -s -j $(nproc)
+
+    echo "Installing Python $VER..."
+    sudo make -s altinstall
+done
+
+echo "All done!"
