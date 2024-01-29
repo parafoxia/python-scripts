@@ -6,22 +6,30 @@ if [[ $# -eq 0 ]]; then
 fi
 
 echo "Configuring packages..."
-sudo apt-get update -qq && sudo apt-get upgrade -qq
-sudo apt-get install -qq \
-    build-essential \
-    libbz2-dev \
-    libffi-dev \
-    libgdbm-dev \
-    liblzma-dev \
-    libncurses5-dev \
-    libnss3-dev \
-    libreadline-dev \
-    libssl-dev \
-    libsqlite3-dev \
-    pkg-config \
-    tk-dev \
+sudo yum -y update -qq && sudo yum -y upgrade -qq
+sudo yum -y install -qq \
+    yum-utils \
+    epel-release
+sudo yum -y groupinstall "Development Tools"
+sudo yum -y install -qq \
+    bzip2-devel \
+    cmake \
+    db4-devel \
+    gcc \
+    gdbm-devel \
+    libffi-devel \
+    libpcap-devel \
+    make \
+    ncurses-devel \
+    nss-devel \
+    openssl11 \
+    openssl11-devel \
+    readline-devel \
+    sqlite-devel \
+    tk-devel \
     wget \
-    zlib1g-dev
+    xz-devel \
+    zlib-devel
 
 cd /tmp
 
