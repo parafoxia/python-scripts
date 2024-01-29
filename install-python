@@ -70,7 +70,10 @@ for VER do
 
     echo "Building Python $VER..."
     cd Python-$VER
-    ./configure -q --enable-optimizations --with-ensurepip=install --with-system-ffi
+    sudo make clean
+    sudo make distclean
+    ./configure -q --enable-optimizations --with-ensurepip=install --with-openssl=/usr/local/openssl11
+    echo "configuration done"
     make -s -j $(nproc)
 
     echo "Installing Python $VER..."
