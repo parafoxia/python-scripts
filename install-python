@@ -31,6 +31,17 @@ sudo yum -y install -qq \
     xz-devel \
     zlib-devel
 
+echo "configure openssl11 for Python3.11 onwards"
+if [ -d /usr/local/openssl11 ]
+then
+    sudo rm -rf /usr/local/openssl11
+fi
+sudo mkdir -p /usr/local/openssl11
+cd /usr/local/openssl11
+sudo ln -s /usr/lib64/openssl11 lib
+sudo ln -s /usr/include/openssl11 include
+echo "done"
+
 cd /tmp
 
 for VER do
