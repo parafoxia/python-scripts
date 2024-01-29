@@ -3,7 +3,8 @@
 ## Installing the Scripts
 
 1. Clone the repo:
-   `git clone https://github.com/parafoxia/python-scripts`
+   `git clone https://github.com/parafoxia/python-scripts` for apt-get package manager
+   `git clone https://github.com/Somil-Gupta/python-scripts-yum` for yum package manger
 2. Make the scripts executable:
    `chmod +x python-scripts/install-python && chmod +x python-scripts/uninstall-python`
 3. Add the scripts to your path by adding the following to your .bashrc/.zshrc/etc.:
@@ -16,9 +17,8 @@
 You can install Python using the following command:
 
 ```sh
-install-python <ver1> [ver2 ...]
+./install-python <ver1> [ver2 ...]
 ```
-
 This builds and installs Python from sources downloaded from the official FTP server.
 While this means you can install any Python version you want, the installation process will take significantly longer.
 Alpha, beta, and release candidate versions can also be installed, and multiple version can be installed at once.
@@ -26,10 +26,10 @@ Alpha, beta, and release candidate versions can also be installed, and multiple 
 For example:
 
 ```sh
-install-python 3.10.7 3.8.0b2 3.11.0rc1
+./install-python 3.10.7 3.8.0b2 3.11.0rc1
 ```
 
-**Note:** If you do not use a Debian-based system, you will need to edit the script to use your distribution's package manager.
+Note: If script is stopped due to error, make sure to delete all the existing files of /tmp/Python-3.x.x
 
 ## Uninstalling Python
 
