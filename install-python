@@ -42,6 +42,9 @@ sudo ln -s /usr/lib64/openssl11 lib
 sudo ln -s /usr/include/openssl11 include
 echo "done"
 
+unset PYTHONHOME
+unset PYTHONPATH
+
 cd /tmp
 
 for VER do
